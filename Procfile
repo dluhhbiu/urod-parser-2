@@ -1,1 +1,1 @@
-upgrade: alembic upgrade head
+web: alembic upgrade head
