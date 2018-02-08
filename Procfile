@@ -1,1 +1,0 @@
-web: alembic upgrade head
