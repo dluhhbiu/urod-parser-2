@@ -31,7 +31,10 @@ def save(item):
     if soup.img:
         n = News(format='img', text=soup.img['src'])
     elif soup.iframe:
-        n = News(format='video', text=soup.iframe['src'])
+        text = soup.iframe['src']
+        if not text:
+            text = soup.find('div', {'class': 'spoilerContent'})['data']
+        n = News(format='video', text=text)
     elif len(soup.greeting.text.strip()) == 0:
         n = News(format='none', text=None)
     else:
