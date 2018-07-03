@@ -35,7 +35,7 @@ def save(item):
         if not text:
             text = soup.find('div', {'class': 'spoilerContent'})['data']
         n = News(format='video', text=text)
-    elif len(soup.greeting.text.strip()) == 0:
+    elif len(soup.get('greeting', {}).get('text', '').strip()) == 0:
         n = News(format='none', text=None)
     else:
         n = News(format='text', text=soup.greeting.text)
